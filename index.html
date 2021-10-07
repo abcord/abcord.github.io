@@ -1,0 +1,202 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+        <title>test</title>
+  <style>
+        @font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcg72j00.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    text-align: center;
+    
+}  
+
+
+.flex-child:first-child {
+    
+} 
+
+    </style>
+    </head>
+  
+
+    <body style="background-color:#1a1a1a">
+        <h1 id="test" style="font-family:'Ubuntu'; color:#e6e6e6">abcord beta</h1>
+        <input id="token" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:500px;" placeholder="Token..." type="text"></input>
+        <button id="showhide" onclick="hideshow()" onmouseover="changecolour3()" onmouseleave="revertcolour3()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Show/Hide</button>
+        <button id="validatetoken" onclick="validate()" onmouseover="changecolour4()" onmouseleave="revertcolour4()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Validate Token</button><br>
+        <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
+        <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Channel ID..." type="text"></input>
+        <button id="original" onclick="send()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
+        <input id="contents" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Enter a message..." type="text"></input>
+        <button onmouseover="changecolour2()" onmouseleave="revertcolour2()" id="send" onclick="sendmessage()" style="height:25px;cursor:pointer;background-color:#262626; margin:5px; border-radius:5px; border:none; color:white; font-family:'Ubuntu'">Send</button><br><br>
+<label style="color:white; font-family:'Ubuntu'; font-size:13px" id="messages"></label><br>
+ <script>
+let result = "";
+let channelname = "";
+           function send(){
+
+validate();
+var xhr2 = new XMLHttpRequest();
+xhr2.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value, true);
+xhr2.setRequestHeader('Content-Type', 'application/json');
+xhr2.setRequestHeader('Authorization', document.getElementById("token").value);
+xhr2.onreadystatechange = function() {
+    if (xhr2.readyState == XMLHttpRequest.DONE) {
+        
+var obj2 = JSON.parse(xhr2.responseText);
+channelname = obj2.name;
+channelname = obj2.name;
+channelname = obj2.name;
+document.getElementById("guildid").innerHTML = obj2.parent_id;
+    };
+    }
+
+xhr2.send();
+
+
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages?limit=50", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.setRequestHeader('Authorization', document.getElementById("token").value);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+
+                      document.getElementById("messages").innerHTML = "";
+              result = "";
+        
+var obj = JSON.parse(xhr.responseText);
+for (var i=0; i<obj.length; i++) {
+   result = result + "<b><font color=#315deb>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cf2d2d>[#" + channelname + "]</font><font color=#949494>(" + obj[i].timestamp.replace(/T/g, ' ') + ")</font> <br>" + obj[i].content + "<br><br>";
+}
+
+document.getElementById("messages").innerHTML = result
+document.title = "Chatting in #" + channelname; 
+    };
+    }
+
+xhr.send();
+
+
+           }
+
+           function sendmessage(){
+
+               var xhr = new XMLHttpRequest();
+xhr.open("POST", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages", true);
+xhr.setRequestHeader('Content-Type', 'application/json');
+xhr.setRequestHeader('Authorization', document.getElementById("token").value);
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == XMLHttpRequest.DONE) {
+        send();
+    };
+    }
+
+xhr.send(JSON.stringify({
+    content: document.getElementById("contents").value,
+    tts: false
+}));
+
+           
+
+
+               
+           }
+
+          function changecolour(){
+
+              document.getElementById("original").style.backgroundColor = "#2e2e2e";
+
+           }
+
+           function revertcolour(){
+
+               document.getElementById("original").style.backgroundColor = "#262626";
+
+           }
+
+           function changecolour2(){
+
+              document.getElementById("send").style.backgroundColor = "#2e2e2e";
+
+           }
+
+           function revertcolour2(){
+
+               document.getElementById("send").style.backgroundColor = "#262626";
+
+           }
+
+           function changecolour3(){
+
+              document.getElementById("showhide").style.backgroundColor = "#2e2e2e";
+
+           }
+
+           function revertcolour3(){
+
+               document.getElementById("showhide").style.backgroundColor = "#262626";
+
+           }
+
+           function changecolour4(){
+
+              document.getElementById("validatetoken").style.backgroundColor = "#2e2e2e";
+
+           }
+
+           function revertcolour4(){
+
+               document.getElementById("validatetoken").style.backgroundColor = "#262626";
+
+           }
+
+               let state = false;
+           function hideshow(){
+  if(state == false){
+    state = true
+    document.getElementById('token').type = 'password';
+  }
+  else if(state == true){
+    state = false
+    document.getElementById('token').type = 'text';
+  }
+           }
+
+           function validate(){
+
+var xhr2 = new XMLHttpRequest();
+xhr2.open("GET", "https://discord.com/api/v9/users/@me", true);
+xhr2.setRequestHeader('Content-Type', 'application/json');
+xhr2.setRequestHeader('Authorization', document.getElementById("token").value);
+xhr2.onreadystatechange = function() {
+    if (xhr2.readyState == XMLHttpRequest.DONE) {
+        
+var obj2 = JSON.parse(xhr2.responseText);
+console.log(obj2)
+document.getElementById("user").innerHTML = "Logged in as " + obj2.username + "#" + obj2.discriminator;
+    };
+    }
+
+xhr2.send();
+
+           }
+
+        </script>
+
+    </body>
+
+</html>
