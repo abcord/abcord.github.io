@@ -52,7 +52,7 @@
         <button id="original" onclick="send()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
         <input id="contents" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Enter a message..." type="text"></input>
         <button onmouseover="changecolour2()" onmouseleave="revertcolour2()" id="send" onclick="sendmessage()" style="height:25px;cursor:pointer;background-color:#262626; margin:5px; border-radius:5px; border:none; color:white; font-family:'Ubuntu'">Send</button><br><br>
-<label style="color:white; font-family:'Roboto';" id="messages"></label><br>
+<label style="color:white; font-family:'Roboto'; font-size:13px" id="messages"></label><br>
  <script>
 let result = "";
 let channelname = "";
@@ -108,7 +108,7 @@ for (var i=0; i<obj.length; i++) {
 
 
 document.getElementById("messages").innerHTML = "Loading...";
-document.getElementById("messages").innerHTML = "<i><font color=#d9d9d9>Fetched last 50 messages [Newest to Oldest]</font></i><br><br><br>" + result
+document.getElementById("messages").innerHTML = "<i><font color=#d9d9d9>Fetched last 50 messages [Newest to Oldest]</font></i><br><br>" + result
 document.title = "Chatting in #" + channelname; 
     };
     }
@@ -219,6 +219,8 @@ document.getElementById("user").innerHTML = "Logged in as " + obj2.username + "#
 xhr2.send();
 
            }
+     
+
 
         </script>
 
