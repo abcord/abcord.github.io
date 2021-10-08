@@ -85,7 +85,8 @@ for (var i=0; i<obj.length; i++) {
             attachments ="";
         }
         {
-        attachments = "<i><font color=#d9d9d9>[<a href=\"" + things[x].url + "\">" + things[x].filename + "</a>]</font></i>"
+        //attachments = "<i><font color=#d9d9d9>[<a href=\"" + things[x].url + "\">" + things[x].filename + "</a>]</font></i>"
+            attachments = "<img src=\"" + things[x].url  + "\">"
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
