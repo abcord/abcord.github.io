@@ -76,8 +76,8 @@ xhr.onreadystatechange = function() {
 result = "";    
 var obj = JSON.parse(xhr.responseText);
 for (var i=0; i<obj.length; i++) {
-    let attachments = "Attachments: " + obj[i].attachments.filename;
-    if(attachments == "Attachments: undefined")
+    let attachments = obj[i].attachments.filename;
+    if(attachments == undefined)
     {
       attachments = "";
     }
