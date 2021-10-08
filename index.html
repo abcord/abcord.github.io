@@ -77,12 +77,20 @@ result = "";
 var obj = JSON.parse(xhr.responseText);
 for (var i=0; i<obj.length; i++) {
     
+    let attachments = ""
     var things = obj[i].attachments;
     for (var x=0; x<things.length; x++) {
-        console.log(things[x].url)
+        if(things[x].url == undefined)
+        {
+            attachments ="";
+        }
+        else
+        {
+        attachments = "<a href=\"" + things[x].url + "\">" + things[x].filename + "</a>"
+        }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cc1f1f>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + " " + "<br><br>";
+   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cc1f1f>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + " [" + attachments + "]<br><br>";
 }
 
 
