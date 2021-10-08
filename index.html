@@ -61,7 +61,6 @@ var obj2 = JSON.parse(xhr2.responseText);
 channelname = obj2.name;
 channelname = obj2.name;
 channelname = obj2.name;
-document.getElementById("guildid").innerHTML = obj2.parent_id;
     };
     }
 
@@ -80,7 +79,8 @@ xhr.onreadystatechange = function() {
         
 var obj = JSON.parse(xhr.responseText);
 for (var i=0; i<obj.length; i++) {
-   result = result + "<b><font color=#315deb>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cf2d2d>[#" + channelname + "]</font><font color=#949494>(" + obj[i].timestamp.replace(/T/g, ' ') + ")</font> <br>" + obj[i].content + "<br><br>";
+    var time = obj[i].timestamp.replace(/T/g, ' ');
+   result = result + "<b><font color=#315deb>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#4727ba>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + "<br><br>";
 }
 
 document.getElementById("messages").innerHTML = result
