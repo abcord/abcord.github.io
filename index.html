@@ -85,7 +85,7 @@ for (var i=0; i<obj.length; i++) {
             attachments ="";
         }
         else{
-            attachments = "<br><img style=\"height:250px; max-width:500px\" src=\"" + things[x].url  + "\">"
+            attachments = "<br><img style=\"max-height:400px max-width:500px\" src=\"" + things[x].url  + "\">"
         }
         
         if(things[x].content_type == "video/mp4")
@@ -94,7 +94,7 @@ for (var i=0; i<obj.length; i++) {
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cc1f1f>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + " " + attachments + "<br><br>";
+   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#3033c9>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + " " + attachments + "<br><br>";
 }
 
 
