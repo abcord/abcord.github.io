@@ -70,7 +70,7 @@ xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
 result = "";    
 var obj = JSON.parse(xhr.responseText);
-for (var i=obj.length; i<0; i--) {
+for (var i=0; i<obj.length; i--) {
     
     let attachments = ""
     var things = obj[i].attachments;
@@ -94,7 +94,7 @@ for (var i=obj.length; i<0; i--) {
 
 
 document.getElementById("messages").innerHTML = "Loading...";
-document.getElementById("messages").innerHTML = result
+document.getElementById("messages").innerHTML = "Fetched last 50 messages [Newest to Oldest]"result
 document.title = "Chatting in #" + channelname; 
     };
     }
