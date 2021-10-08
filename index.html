@@ -73,12 +73,16 @@ xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr.onreadystatechange = function() {
     if (xhr.readyState == XMLHttpRequest.DONE) {
-result = "";
-        
+result = "";    
 var obj = JSON.parse(xhr.responseText);
 for (var i=0; i<obj.length; i++) {
+    let attachments = "Attachments: " + obj[i].attachments.filename;
+    if(attachments == "Attachments: undefined")
+    {
+      attachments = "";
+    }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cc1f1f>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + "<br><br>";
+   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#cc1f1f>[#" + channelname + "]</font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + " " + attachments + "<br><br>";
 }
 
 
