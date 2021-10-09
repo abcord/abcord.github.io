@@ -256,6 +256,7 @@ getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token"
 getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
+ console.log("ALL CHANNELS FOR GUILD ID " + document.getElementById("guildid").value);
 for (var y=0; y<getchannelsobj.length; y++) {
 if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 {
@@ -266,6 +267,7 @@ else
 console.log(getchannelsobj[y].name + " || " + getchannelsobj[y].id)
 }
 }
+console.log("======================")
 }
 }
 getchannelsxhr.send();
@@ -282,10 +284,12 @@ getguildsxhr.setRequestHeader('Content-Type', 'application/json');
 getguildsxhr.setRequestHeader('Authorization', document.getElementById('token').value);
 getguildsxhr.onreadystatechange = function() {
     if (getguildsxhr.readyState == XMLHttpRequest.DONE) {
+        console.log("ALL GUILDS FOR CURRENT USER")
 var getguildsobj = JSON.parse(getguildsxhr.responseText);
 for (var n=0; n<getguildsobj.length; n++) {
 console.log(getguildsobj[n].name + " || " + getguildsobj[n].id)
 }
+console.log("======================")
 }
 }
 getguildsxhr.send();
