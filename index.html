@@ -154,7 +154,7 @@ for (var i=0; i<obj.length; i++) {
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#b51f1f>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#242abf> [#" + channelname + "]</font>" + mentions + "<font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + embeds + "<br><br>";
+   result = result + "<b><font color=#b51f1f>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#242abf> [#" + channelname + "] </font>" + mentions + "<font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + embeds + "<br><br>";
 }
 
 
