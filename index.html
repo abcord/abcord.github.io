@@ -118,7 +118,7 @@ for (var i=0; i<obj.length; i++) {
                 footermsg = footer.text
                 
             }
-            embeds = "<br><font color=#cfcfcf><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media: <i>" + embedslist[n].url + "</i></font>"
+            embeds = "<br><font color=#11b9c2><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media: <i>" + embedslist[n].url + "</i></font>"
         }
     }
     
@@ -154,7 +154,7 @@ for (var i=0; i<obj.length; i++) {
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#11b9c2>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#242abf> [#" + channelname + "]</font>" + mentions + "<font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + embeds + "<br><br>";
+   result = result + "<b><font color=#b51f1f>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#242abf> [#" + channelname + "]</font>" + mentions + "<font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + embeds + "<br><br>";
 }
 
 
