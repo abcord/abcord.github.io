@@ -46,7 +46,8 @@
         <h1 id="test" style="font-family:'Ubuntu'; color:#e6e6e6">ABCord Discord Client</h1>
         <input id="token" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:500px;" placeholder="Token..." type="text"></input>
         <button id="showhide" onclick="hideshow()" onmouseover="changecolour3()" onmouseleave="revertcolour3()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Show/Hide</button>
-        <button id="validatetoken" onclick="validate()" onmouseover="changecolour4()" onmouseleave="revertcolour4()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Validate Token</button><br>
+        <button id="validatetoken" onclick="validate()" onmouseover="changecolour4()" onmouseleave="revertcolour4()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Validate Token</button>
+        <button id="getguilds" onclick="getguilds()" onmouseover="changecolour6()" onmouseleave="revertcolour6()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log All Servers</button><br>
         <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
         <input id="guildid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Guild ID..." type="text"></input>
         <button id="getchannels" onclick="getchannels()" onmouseover="changecolour5()" onmouseleave="revertcolour5()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log List Of Channels</button><br>
@@ -202,6 +203,18 @@ xhr.send(JSON.stringify({
                document.getElementById("getchannels").style.backgroundColor = "#262626";
 
            }
+     
+      function changecolour6(){
+
+              document.getElementById("getguilds").style.backgroundColor = "#2e2e2e";
+
+           }
+
+           function revertcolour6(){
+
+               document.getElementById("getguilds").style.backgroundColor = "#262626";
+
+           }
 
                let state = false;
            function hideshow(){
@@ -257,6 +270,28 @@ console.log(getchannelsobj[y].name + " || " + getchannelsobj[y].id)
 }
 getchannelsxhr.send();
          
+         
+         
+     }
+     
+     function getguilds(){
+         
+         var getguildsxhr = new XMLHttpRequest();
+getguildsxhr.open("GET", "https://discord.com/api/v9/users/@me/guilds", true);
+getguildsxhr.setRequestHeader('Content-Type', 'application/json');
+getguildsxhr.setRequestHeader('Authorization', document.getElementById('token').value);
+getguildsxhr.onreadystatechange = function() {
+    if (getguildsxhr.readyState == XMLHttpRequest.DONE) {
+var getguildsobj = JSON.parse(getguildsxhr.responseText);
+for (var n=0; n<getguildsobj.length; n++) {
+console.log(getguildsobj[n].name + " || " + getguildsobj[n].id)
+}
+}
+}
+getguildsxhr.send();
+
+
+
          
          
      }
