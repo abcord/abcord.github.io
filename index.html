@@ -95,7 +95,7 @@ for (var i=0; i<obj.length; i++) {
             mentions ="";
         }
         else{
-            mentions = "[@" + mentionlist[b].username + "#" + mentionlist[b].discriminator + "]"
+            mentions = "<font color=#3deb54>[Mentions: @" + mentionlist[b].username + "#" + mentionlist[b].discriminator + "]</font>"
         }
     }
         
@@ -118,7 +118,7 @@ for (var i=0; i<obj.length; i++) {
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#0e0e9c> [#" + channelname + "] </font><font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + mentions + " " + obj[i].content + attachments + "<br><br>";
+   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#0e0e9c> [#" + channelname + "] </font> + mentions + <font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + "<br><br>";
 }
 
 
