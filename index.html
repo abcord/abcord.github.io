@@ -87,6 +87,19 @@ result = "";
 var obj = JSON.parse(xhr.responseText);
 for (var i=0; i<obj.length; i++) {
     
+    let embeds = ""
+    var embedslist = obj[i].embeds;
+    for (var n=0; n<embedslist.length; n++) {
+        if(embedslist[n].type == undefined)
+        {
+            embeds ="";
+        }
+        else{
+            embeds = "<br><font color=yellow>Embed Description:" + embedslist[n].description "</font>"
+        }
+    }
+    
+    
      let mentions = ""
     var mentionlist = obj[i].mentions;
     for (var b=0; b<mentionlist.length; b++) {
@@ -118,7 +131,7 @@ for (var i=0; i<obj.length; i++) {
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
-   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#242abf> [#" + channelname + "]</font>" + mentions + "<font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + "<br><br>";
+   result = result + "<b><font color=#e31e1e>" + obj[i].author.username + "#" + obj[i].author.discriminator + "</font></b><font color=#242abf> [#" + channelname + "]</font>" + mentions + "<font color=#949494>(" + time.substring(0, time.length - 9) + ")</font> <br>" + obj[i].content + attachments + embeds + "<br><br>";
 }
 
 
