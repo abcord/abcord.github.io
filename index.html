@@ -90,12 +90,12 @@ for (var i=0; i<obj.length; i++) {
      let mentions = ""
     var mentionlist = obj[i].mentions;
     for (var b=0; b<mentionlist.length; b++) {
-        if(things[b].username == undefined)
+        if(mentionlist[b].username == undefined)
         {
             mentions ="";
         }
         else{
-            mentions = "[@" + things[b].username + "#" + things[b].discriminator + "]"
+            mentions = "[@" + mentionlist[b].username + "#" + mentionlist[b].discriminator + "]"
         }
     }
         
