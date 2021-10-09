@@ -95,9 +95,30 @@ for (var i=0; i<obj.length; i++) {
             embeds ="";
         }
         else{
-            var author = JSON.parse(embedslist[n].author);
-            var footer = JSON.parse(embedslist[n].description);
-            embeds = "<br><font color=yellow>Embed<br>Author:" + author.name + "<br>Title: " + embedslist[n].title + "<br>Description: " + embedslist[n].description + "<br>Footer" + footer.text + "</font>"
+            var author = "";
+            var footer = "";
+            var authormsg = "";
+            var footermsg = "";
+            if(embedslist[n].author == undefined)
+            {
+                authormsg = "undefined"
+            }
+            else
+            {
+                author =  JSON.parse(embedslist[n].author);
+                authormsg = author.name
+            }
+             if(embedslist[n].footer == undefined)
+            {
+                footermsg = "undefined"
+            }
+            else
+            {
+                footer =  JSON.parse(embedslist[n].footer);
+                footermsg = footer.text
+                
+            }
+            embeds = "<br><font color=yellow>Embed<br>Author:" + authormsg + "<br>Title: " + embedslist[n].title + "<br>Description: " + embedslist[n].description + "<br>Footer" + footermsg + "</font>"
         }
     }
     
