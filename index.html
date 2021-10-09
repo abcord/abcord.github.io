@@ -47,7 +47,7 @@
         <input id="token" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:500px;" placeholder="Token..." type="text"></input>
         <button id="showhide" onclick="hideshow()" onmouseover="changecolour3()" onmouseleave="revertcolour3()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Show/Hide</button>
         <button id="validatetoken" onclick="validate()" onmouseover="changecolour4()" onmouseleave="revertcolour4()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Validate Token</button>
-        <button id="getchannels" onclick="getguilds()" onmouseover="changecolour6()" onmouseleave="revertcolour6()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log All Channels</button><br>
+        <button id="getchannels" onclick="getguilds()" onmouseover="changecolour5()" onmouseleave="revertcolour5()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log All Channels</button><br>
         <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
         <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Channel ID..." type="text"></input>
         <button id="original" onclick="send()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
@@ -249,7 +249,7 @@ xhr2.send();
          var getchannelsxhr = new XMLHttpRequest();
 getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + guild + "/channels", true);
 getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
-getchannelsxhr.setRequestHeader('Authorization', "ODMwMzUwNTE2OTg2NzA4MDI4.YWC7JA.8_1pC4ej9CA0OIJl-zerVhHaJ6M");
+getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
@@ -283,7 +283,7 @@ getchannelsxhr.send();
          var getguildsxhr = new XMLHttpRequest();
 getguildsxhr.open("GET", "https://discord.com/api/v9/users/@me/guilds", true);
 getguildsxhr.setRequestHeader('Content-Type', 'application/json');
-getguildsxhr.setRequestHeader('Authorization', "ODMwMzUwNTE2OTg2NzA4MDI4.YWC7JA.8_1pC4ej9CA0OIJl-zerVhHaJ6M");
+getguildsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getguildsxhr.onreadystatechange = function() {
     if (getguildsxhr.readyState == XMLHttpRequest.DONE) {
         console.log("ALL GUILDS AND CHANNELS FOR CURRENT USER")
