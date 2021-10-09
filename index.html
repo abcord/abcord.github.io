@@ -48,6 +48,8 @@
         <button id="showhide" onclick="hideshow()" onmouseover="changecolour3()" onmouseleave="revertcolour3()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Show/Hide</button>
         <button id="validatetoken" onclick="validate()" onmouseover="changecolour4()" onmouseleave="revertcolour4()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Validate Token</button><br>
         <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
+        <input id="guildid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Guild ID..." type="text"></input>
+        <button id="getchannels" onclick="getchannels" onmouseover="changecolour5()" onmouseleave="revertcolour5()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log List Of Channels</button><br>
         <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Channel ID..." type="text"></input>
         <button id="original" onclick="send()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
         <input id="contents" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Enter a message..." type="text"></input>
@@ -188,6 +190,18 @@ xhr.send(JSON.stringify({
                document.getElementById("validatetoken").style.backgroundColor = "#262626";
 
            }
+     
+     function changecolour5(){
+
+              document.getElementById("getchannels").style.backgroundColor = "#2e2e2e";
+
+           }
+
+           function revertcolour5(){
+
+               document.getElementById("getchannels").style.backgroundColor = "#262626";
+
+           }
 
                let state = false;
            function hideshow(){
@@ -219,6 +233,33 @@ document.getElementById("user").innerHTML = "Logged in as " + obj2.username + "#
 xhr2.send();
 
            }
+     
+     function getchannels(){
+         
+         var getchannelsxhr = new XMLHttpRequest();
+getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + document.getElementById("guildid").value + "/channels", true);
+getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
+getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
+getchannelsxhr.onreadystatechange = function() {
+    if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
+var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
+for (var y=0; y<getchannelsobj.length; y++) {
+if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
+{
+
+}
+else
+{
+console.log(getchannelsobj[y].name + " || " + getchannelsobj[y].id)
+}
+}
+}
+}
+getchannelsxhr.send();
+         
+         
+         
+     }
      
 
 
