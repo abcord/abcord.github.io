@@ -118,7 +118,8 @@ for (var i=0; i<obj.length; i++) {
                 footermsg = footer.text
                 
             }
-            embeds = "<br><font color=#11b9c2><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media:<br></font>" + "<br><img style=\"max-height:400px;max-width:500px\" src=\"" + embedslist[n].url  + "\">"
+            var embedimage = embedslist[n].thumbnail;
+            embeds = "<br><font color=#11b9c2><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media:<br></font>" + "<br><img style=\"max-height:400px;max-width:500px\" src=\"" + embedimage.proxy_url  + "\">"
         }
     }
     
