@@ -105,7 +105,7 @@ for (var i=0; i<obj.length; i++) {
             }
             else
             {
-                author =  JSON.parse(embedslist[n].author);
+                author =  embedslist[n].author
                 authormsg = author.name
             }
              if(embedslist[n].footer == undefined)
@@ -114,7 +114,7 @@ for (var i=0; i<obj.length; i++) {
             }
             else
             {
-                footer =  JSON.parse(embedslist[n].footer);
+                footer =  embedslist[n].footer
                 footermsg = footer.text
                 
             }
