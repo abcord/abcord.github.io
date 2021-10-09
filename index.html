@@ -95,7 +95,9 @@ for (var i=0; i<obj.length; i++) {
             embeds ="";
         }
         else{
-            embeds = "<br><font color=yellow>Embed<br>Author:" + embedslist[n].author + "<br>Title: " + embedslist[n].title + "<br>Description: " + embedslist[n].description + "<br>Footer" + embedslist[n].footer + "</font>"
+            var author = JSON.parse(embedslist[n].author);
+            var footer = JSON.parse(embedslist[n].description);
+            embeds = "<br><font color=yellow>Embed<br>Author:" + author.name + "<br>Title: " + embedslist[n].title + "<br>Description: " + embedslist[n].description + "<br>Footer" + footer.text + "</font>"
         }
     }
     
