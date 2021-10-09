@@ -87,6 +87,18 @@ result = "";
 var obj = JSON.parse(xhr.responseText);
 for (var i=0; i<obj.length; i++) {
     
+     let mentions = ""
+    var mentionlist = obj[i].mentions;
+    for (var b=0; b<mentionlist.length; b++) {
+        if(things[b].username == undefined)
+        {
+            mentions ="";
+        }
+        else{
+            mentions = "[@" + things[b].username + "#" + things[b].discriminator + "]"
+        }
+    }
+        
     let attachments = ""
     var things = obj[i].attachments;
     for (var x=0; x<things.length; x++) {
@@ -98,16 +110,7 @@ for (var i=0; i<obj.length; i++) {
             attachments = "<br><img style=\"max-height:400px;max-width:500px\" src=\"" + things[x].url  + "\">"
         }
         
-        let mentions = ""
-    var mentionlist = obj[i].mentions;
-    for (var b=0; b<mentionlist.length; b++) {
-        if(things[b].username == undefined)
-        {
-            mentions ="";
-        }
-        else{
-            mentions = "[@" + things[b].username + "#" + things[b].discriminator + "]"
-        }
+    
         
         if(things[x].content_type == "video/mp4" || things[x].content_type == "video/quicktime")
         {
