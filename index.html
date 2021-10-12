@@ -317,6 +317,7 @@ getchannelsxhr.onreadystatechange = function() {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
  console.log("ALL TEXT CHANNELS FOR GUILD ID " + guild)
 console.log("======================")
+        console.log(" ")
 for (var y=0; y<getchannelsobj.length; y++) {
 if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 {
@@ -328,8 +329,6 @@ console.log(getchannelsobj[y].name + " || " + getchannelsobj[y].id);
 }
 }
 console.log("======================");
-console.log(" ")
-console.log(" ")
 }
 }
 getchannelsxhr.send();
