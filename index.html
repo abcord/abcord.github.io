@@ -316,8 +316,8 @@ getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
  console.log("ALL TEXT CHANNELS FOR GUILD ID " + guild)
+ console.log(" ")
 console.log("======================")
-        console.log(" ")
 for (var y=0; y<getchannelsobj.length; y++) {
 if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 {
