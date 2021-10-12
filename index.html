@@ -148,11 +148,15 @@ for (var i=0; i<obj.length; i++) {
         
     
         
-        if(things[x].content_type == "video/mp4" || things[x].content_type == "video/quicktime")
+        if(things[x].content_type == "video/mp4")
         {
-            //attachments = " <i><font color=#d9d9d9>[<a style=\"color:#d9d9d9\" href=\"" + things[x].url + "\">" + things[x].filename + "</a>]</font></i>"
-            attachments = "<br><iframe style=\"width:500px; heigth:250px\" src=\"" + things[x].proxy_url + "\"></iframe>"
+            attachments = "<br><iframe style=\"width:500px; heigth:350px\" src=\"" + things[x].proxy_url + "\"></iframe>"
 
+        }
+        
+        if(things[x].content_type == "video/quicktime")
+        {
+            attachments = " <i><font color=#d9d9d9>[<a style=\"color:#d9d9d9\" href=\"" + things[x].url + "\">" + things[x].filename + "</a>]</font></i>"
         }
     }
     var time = obj[i].timestamp.replace(/T/g, ' ');
