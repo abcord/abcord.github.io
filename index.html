@@ -306,6 +306,7 @@ xhr2.send();
            }
      
      let channellist = "";
+     let serverlist = "";
      function getchannels(guild){
          var getchannelsxhr = new XMLHttpRequest();
 getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + guild + "/channels", true);
@@ -314,8 +315,8 @@ getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token"
 getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
- channellist = channellist  + "ALL TEXT CHANNELS FOR GUILD ID " + guild + "<br>";
-channellist = channellist  + "======================"
+ server = serverlist  + "ALL TEXT CHANNELS FOR GUILD ID " + guild + "<br>";
+server = serverlist  + "======================"
 for (var y=0; y<getchannelsobj.length; y++) {
 if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 {
@@ -323,12 +324,13 @@ if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 }
 else
 {
-channellist = channellist  + getchannelsobj[y].name + " || " + getchannelsobj[y].id;
+serverlist = serverlist  + getchannelsobj[y].name + " || " + getchannelsobj[y].id;
 }
 }
-channellist = channellist  + "======================"
-channellist = channellist  + "<br>"
-channellist = channellist  + "<br>"
+serverlist = serverlist  + "======================"
+serverlist = serverlist  + "<br>"
+serverlist = serverlist  + "<br>"
+        return serverlist;
 }
 }
 getchannelsxhr.send();
