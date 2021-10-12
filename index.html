@@ -315,8 +315,8 @@ getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token"
 getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
- server = serverlist  + "ALL TEXT CHANNELS FOR GUILD ID " + guild + "<br>";
-server = serverlist  + "======================"
+ console.log("ALL TEXT CHANNELS FOR GUILD ID " + guild)
+console.log("======================")
 for (var y=0; y<getchannelsobj.length; y++) {
 if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 {
@@ -327,10 +327,9 @@ else
 serverlist = serverlist  + getchannelsobj[y].name + " || " + getchannelsobj[y].id;
 }
 }
-serverlist = serverlist  + "======================"
-serverlist = serverlist  + "<br>"
-serverlist = serverlist  + "<br>"
-        return serverlist;
+console.log("======================");
+console.log(" ")
+console.log(" ")
 }
 }
 getchannelsxhr.send();
@@ -349,13 +348,13 @@ getguildsxhr.setRequestHeader('Content-Type', 'application/json');
 getguildsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getguildsxhr.onreadystatechange = function() {
     if (getguildsxhr.readyState == XMLHttpRequest.DONE) {
-        channellist = channellist  + "ALL GUILDS AND CHANNELS FOR CURRENT USER";
+       console.log("ALL GUILDS AND CHANNELS FOR CURRENT USER");
 var getguildsobj = JSON.parse(getguildsxhr.responseText);
 for (var n=0; n<getguildsobj.length; n++) {
-channellist = channellist  + getchannels(getguildsobj[n].id);
-     console.log(channellist)
+console.log(getchannels(getguildsobj[n].id));
+    console.log(" ")
+    console.log(" ")
 }
- console.log(channellist)
 
 
 }
