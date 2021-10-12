@@ -78,7 +78,7 @@ xhr2.send();
 
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages?limit=100", true);
+xhr.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages?limit=101", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr.onreadystatechange = function() {
