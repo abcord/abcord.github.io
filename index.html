@@ -349,11 +349,8 @@ getguildsxhr.onreadystatechange = function() {
         channellist = channellist  + "ALL GUILDS AND CHANNELS FOR CURRENT USER";
 var getguildsobj = JSON.parse(getguildsxhr.responseText);
 for (var n=0; n<getguildsobj.length; n++) {
-getchannels(getguildsobj[n].id);
-console.log(channellist)
-
+channellist = channellist  + getchannels(getguildsobj[n].id);
 }
-channellist = channellist  + "<br>"
  console.log(channellist)
 
 
