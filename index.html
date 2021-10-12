@@ -151,7 +151,7 @@ for (var i=0; i<obj.length; i++) {
         if(things[x].content_type == "video/mp4" || things[x].content_type == "video/quicktime")
         {
             //attachments = " <i><font color=#d9d9d9>[<a style=\"color:#d9d9d9\" href=\"" + things[x].url + "\">" + things[x].filename + "</a>]</font></i>"
-            attachments = "<br><iframe src=\"" + things[x].url + "\"></iframe>"
+            attachments = "<br><iframe src=\"" + things[x].proxy_url + "\"></iframe>"
 
         }
     }
