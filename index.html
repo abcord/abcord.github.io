@@ -350,6 +350,7 @@ getguildsxhr.onreadystatechange = function() {
 var getguildsobj = JSON.parse(getguildsxhr.responseText);
 for (var n=0; n<getguildsobj.length; n++) {
 getchannels(getguildsobj[n].id);
+console.log(channellist)
 
 }
 channellist = channellist  + "<br>"
