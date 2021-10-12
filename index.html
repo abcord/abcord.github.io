@@ -78,7 +78,7 @@ xhr2.send();
 
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages?limit=50", true);
+xhr.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages?limit=100", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr.onreadystatechange = function() {
@@ -159,7 +159,7 @@ for (var i=0; i<obj.length; i++) {
 
 
 document.getElementById("messages").innerHTML = "Loading...";
-document.getElementById("messages").innerHTML = "<i><font color=#d9d9d9>Fetched last 50 messages [Newest to Oldest]</font></i><br><br>" + result
+document.getElementById("messages").innerHTML = "<i><font color=#d9d9d9>Fetched last 100 messages [Newest to Oldest]</font></i><br><br>" + result
 document.title = "Chatting in #" + channelname; 
     };
     }
