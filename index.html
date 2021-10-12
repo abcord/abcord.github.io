@@ -118,7 +118,7 @@ for (var i=0; i<obj.length; i++) {
                 footermsg = footer.text
                 
             }
-            embeds = "<br><font color=#11b9c2><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media: <i>" + embedslist[n].url + "</i><br></font>";
+            embeds = embeds + "<br><font color=#11b9c2><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media: <i>" + embedslist[n].url + "</i><br></font>";
         }
     }
     
@@ -304,6 +304,7 @@ xhr2.send();
 
            }
      
+     let channellist = "";
      function getchannels(guild){
          var getchannelsxhr = new XMLHttpRequest();
 getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + guild + "/channels", true);
@@ -312,8 +313,8 @@ getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token"
 getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
- console.log("ALL TEXT CHANNELS FOR GUILD ID " + guild);
-console.log("======================")
+ channellist = channellist  + "ALL TEXT CHANNELS FOR GUILD ID " + guild + "<br>";
+channellist = channellist  + "======================"
 for (var y=0; y<getchannelsobj.length; y++) {
 if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 {
@@ -324,9 +325,9 @@ else
 console.log(getchannelsobj[y].name + " || " + getchannelsobj[y].id)
 }
 }
-console.log("======================")
-console.log(" ")
-console.log(" ")
+channellist = channellist  + "======================"
+channellist = channellist  + "<br>"
+channellist = channellist  + "<br>"
 }
 }
 getchannelsxhr.send();
@@ -345,13 +346,15 @@ getguildsxhr.setRequestHeader('Content-Type', 'application/json');
 getguildsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getguildsxhr.onreadystatechange = function() {
     if (getguildsxhr.readyState == XMLHttpRequest.DONE) {
-        console.log("ALL GUILDS AND CHANNELS FOR CURRENT USER")
+        channellist = channellist  + "ALL GUILDS AND CHANNELS FOR CURRENT USER";
 var getguildsobj = JSON.parse(getguildsxhr.responseText);
 for (var n=0; n<getguildsobj.length; n++) {
 getchannels(getguildsobj[n].id);
 
 }
-console.log(" ")
+channellist = channellist  + "<br>"
+ console.log(channellist)
+
 
 }
 }
