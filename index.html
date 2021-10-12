@@ -150,7 +150,10 @@ for (var i=0; i<obj.length; i++) {
         
         if(things[x].content_type == "video/mp4")
         {
-            attachments = "<br><video width=\"500\" height=\"345\" src=\"" + things[x].proxy_url + "\"/>"
+            
+           attachments = "<video width=\"320\" height=\"240\" controls> <source src=\"" + things[x].proxy_url + "\"type=\"video/mp4\"></video>"
+            
+            \\attachments = "<br><video width=\"500\" height=\"345\" src=\"" + things[x].proxy_url + "\"/>"
 
         }
         
