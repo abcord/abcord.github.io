@@ -329,6 +329,8 @@ console.log(getchannelsobj[y].name + " || " + getchannelsobj[y].id);
 }
 }
 console.log("======================");
+            console.log(" ")
+    console.log(" ")
 }
 }
 getchannelsxhr.send();
@@ -351,8 +353,7 @@ getguildsxhr.onreadystatechange = function() {
 var getguildsobj = JSON.parse(getguildsxhr.responseText);
 for (var n=0; n<getguildsobj.length; n++) {
 getchannels(getguildsobj[n].id);
-    console.log(" ")
-    console.log(" ")
+
 }
 
 
