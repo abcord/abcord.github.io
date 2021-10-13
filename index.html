@@ -405,7 +405,7 @@ getchannelsxhr.send();
 let result = "";
 let channelinfo = "";
 var getchannelsxhr = new XMLHttpRequest();
-getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + document.getElementById("channelid").value + "/channels", true);
+getchannelsxhr.open("GET", "https://discord.com/api/v9/users/@me/guilds", true);
 getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
 getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getchannelsxhr.onreadystatechange = function() {
