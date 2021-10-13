@@ -64,7 +64,7 @@ let channelname = "";
 validate();
                alert(test.id)
 var xhr2 = new XMLHttpRequest();
-xhr2.open("GET", "https://discord.com/api/v9/channels/" + this.id, true);
+xhr2.open("GET", "https://discord.com/api/v9/channels/" + test.id, true);
 xhr2.setRequestHeader('Content-Type', 'application/json');
 xhr2.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr2.onreadystatechange = function() {
@@ -81,7 +81,7 @@ xhr2.send();
 
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://discord.com/api/v9/channels/" + this.id + "/messages?limit=100", true);
+xhr.open("GET", "https://discord.com/api/v9/channels/" + test.id + "/messages?limit=100", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr.onreadystatechange = function() {
