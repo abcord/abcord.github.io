@@ -120,7 +120,7 @@ for (var i=0; i<obj.length; i++) {
                 
             }
             embeds = embeds + "<br><font color=#11b9c2><b>EMBED</b><br>Author: <i>" + authormsg + "</i><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br>Footer: <i>" + footermsg + "</i><br>Media: <i>" + embedslist[n].url + "</i><br></font>";
-            if(embedslist[n].type = "video" && embedslist[n].url.contains("youtube")
+            if(embedslist[n].type = "video" && embedslist[n].url.contains("youtube"))
                {
             embeds = embeds + "<br><font color=#11b9c2><b>YOUTUBE VIDEO</b><br>Title: <i>" + embedslist[n].title + "</i><br>Description: <i>" + embedslist[n].description + "</i><br></font>" + "<video width=\"320\" height=\"240\" controls> <source src=\"" + embedslist[n].url + "\"type=\"video/mp4\"></video>";
                }
