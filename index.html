@@ -50,8 +50,8 @@
         <button id="getchannels" onclick="getguilds()" onmouseover="changecolour5()" onmouseleave="revertcolour5()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log All Channels</button><br>
         <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label>
         <label id="channellist" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
-        <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Channel ID..." type="text"></input>
-        <button id="original" onclick="createchannelbuttons()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
+        <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Server ID..." type="text"></input>
+        <button id="original" onclick="createchannelbuttons()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Channels</button><br>
         <label id="channelbuttons" style="font-family:'Ubuntu'; color:#e6e6e6"></label>
 <input id="contents" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Enter a message..." type="text"></input>
         <button onmouseover="changecolour2()" onmouseleave="revertcolour2()" id="send" onclick="sendmessage()" style="height:25px;cursor:pointer;background-color:#262626; margin:5px; border-radius:5px; border:none; color:white; font-family:'Ubuntu'">Send</button><br><br>
@@ -60,9 +60,6 @@
 let result = "";
 let channelname = "";
            function send(test){
-
-validate();
-               alert(test.id)
 var xhr2 = new XMLHttpRequest();
 xhr2.open("GET", "https://discord.com/api/v9/channels/" + test.id, true);
 xhr2.setRequestHeader('Content-Type', 'application/json');
@@ -165,7 +162,7 @@ for (var i=0; i<obj.length; i++) {
         if(things[x].content_type == "video/mp4")
         {
             
-           attachments = "<video width=\"320\" height=\"240\" controls> <source src=\"" + things[x].proxy_url + "\"type=\"video/mp4\"></video>"
+           attachments = "<br><video width=\"320\" height=\"240\" controls> <source src=\"" + things[x].proxy_url + "\"type=\"video/mp4\"></video>"
             
             //attachments = "<br><video width=\"500\" height=\"345\" src=\"" + things[x].proxy_url + "\"/>"
 
@@ -398,7 +395,7 @@ channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius
 }
 result = result + channelinfo;
 console.log(result)
-document.getElementById("channelbuttons").innerHTML = result + "<br>"
+document.getElementById("channelbuttons").innerHTML = "All Channels For " + document.getElementById("channelid").value + "<br>" + result + "<br><br>"
 }
 }
 getchannelsxhr.send();
