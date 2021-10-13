@@ -59,9 +59,10 @@
  <script>
 let result = "";
 let channelname = "";
-           function send(){
+           function send(test){
 
 validate();
+               alert(test.id)
 var xhr2 = new XMLHttpRequest();
 xhr2.open("GET", "https://discord.com/api/v9/channels/" + this.id, true);
 xhr2.setRequestHeader('Content-Type', 'application/json');
@@ -392,12 +393,12 @@ if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
 }
 else
 {
-channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:\"Segoe UI\"\" onclick=\"send()\" id=\"" + getchannelsobj[y].id + "\">#" + getchannelsobj[y].name +"</button>"
+channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:\"Segoe UI\"\" onclick=\"send(this)\" id=\"" + getchannelsobj[y].id + "\">#" + getchannelsobj[y].name +"</button>"
 }
 }
 result = result + channelinfo;
 console.log(result)
-document.getElementById("channelbuttons").innerHTML = result
+document.getElementById("channelbuttons").innerHTML = result + "<br>"
 }
 }
 getchannelsxhr.send();
