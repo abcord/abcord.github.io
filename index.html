@@ -47,8 +47,9 @@
         <input id="token" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:500px;" placeholder="Token..." type="text"></input>
         <button id="showhide" onclick="hideshow()" onmouseover="changecolour3()" onmouseleave="revertcolour3()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Show/Hide</button>
         <button id="validatetoken" onclick="validate()" onmouseover="changecolour4()" onmouseleave="revertcolour4()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Validate Token</button>
-        <button id="getchannels" onclick="getguilds()" onmouseover="changecolour5()" onmouseleave="revertcolour5()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log All Channels</button><br>
-        <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label>
+        <button id="getchannels" onclick="createguildbuttons()" onmouseover="changecolour5()" onmouseleave="revertcolour5()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Log All Channels</button><br>
+        <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br>
+        <label id="guildbuttons" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
         <label id="channellist" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
         <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Server ID..." type="text"></input>
         <button id="original" onclick="createchannelbuttons()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Channels</button><br>
@@ -373,11 +374,11 @@ getguildsxhr.send();
      
      }    
      
-     function createchannelbuttons(){
+     function createchannelbuttons(men){
 let result = "";
 let channelinfo = "";
 var getchannelsxhr = new XMLHttpRequest();
-getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + document.getElementById("channelid").value + "/channels", true);
+getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + men.id + "/channels", true);
 getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
 getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getchannelsxhr.onreadystatechange = function() {
@@ -394,12 +395,32 @@ channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius
 }
 }
 result = result + channelinfo;
-console.log(result)
 document.getElementById("channelbuttons").innerHTML = result + "<br><br>"
 }
 }
 getchannelsxhr.send();
  }      
+     
+     function createguildbuttons(){
+let result = "";
+let channelinfo = "";
+var getchannelsxhr = new XMLHttpRequest();
+getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + document.getElementById("channelid").value + "/channels", true);
+getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
+getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
+getchannelsxhr.onreadystatechange = function() {
+    if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
+var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
+for (var y=0; y<getchannelsobj.length; y++) {
+channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:\"Segoe UI\"\" onclick=\"createchannelbuttons(this)\" id=\"" + getchannelsobj[y].id + "\">#" + getchannelsobj[y].name +"</button>"
+
+}
+}
+    result = result + channelinfo;
+document.getElementById("guildbuttons").innerHTML = result + "<br><br>"
+getchannelsxhr.send();
+ }   
+     }
 
         </script>
 
