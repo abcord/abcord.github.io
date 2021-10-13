@@ -395,7 +395,7 @@ channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius
 }
 result = result + channelinfo;
 console.log(result)
-document.getElementById("channelbuttons").innerHTML = "All Channels For " + document.getElementById("channelid").value + "<br>" + result + "<br><br>"
+document.getElementById("channelbuttons").innerHTML = result + "<br><br>"
 }
 }
 getchannelsxhr.send();
