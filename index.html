@@ -51,8 +51,9 @@
         <label id="user" style="font-family:'Ubuntu'; color:#e6e6e6"></label>
         <label id="channellist" style="font-family:'Ubuntu'; color:#e6e6e6"></label><br><br>
         <input id="channelid" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Channel ID..." type="text"></input>
-        <button id="original" onclick="send()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
-        <input id="contents" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Enter a message..." type="text"></input>
+        <button id="original" onclick="createchannelbuttons()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:'Ubuntu'">Get/Update Messages</button><br>
+        <label id="channelbuttons" style="font-family:'Ubuntu'; color:#e6e6e6"></label>
+<input id="contents" style="border:none; border-radius:5px;outline:none;background-color:#262626;color:white;font-family:'Ubuntu'; height:25px; width:300px;" placeholder="Enter a message..." type="text"></input>
         <button onmouseover="changecolour2()" onmouseleave="revertcolour2()" id="send" onclick="sendmessage()" style="height:25px;cursor:pointer;background-color:#262626; margin:5px; border-radius:5px; border:none; color:white; font-family:'Ubuntu'">Send</button><br><br>
 <label style="color:white; font-family:'Roboto'; font-size:13px" id="messages"></label><br>
  <script>
@@ -62,7 +63,7 @@ let channelname = "";
 
 validate();
 var xhr2 = new XMLHttpRequest();
-xhr2.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value, true);
+xhr2.open("GET", "https://discord.com/api/v9/channels/" + this.id, true);
 xhr2.setRequestHeader('Content-Type', 'application/json');
 xhr2.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr2.onreadystatechange = function() {
@@ -79,7 +80,7 @@ xhr2.send();
 
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://discord.com/api/v9/channels/" + document.getElementById("channelid").value + "/messages?limit=100", true);
+xhr.open("GET", "https://discord.com/api/v9/channels/" + this.id + "/messages?limit=100", true);
 xhr.setRequestHeader('Content-Type', 'application/json');
 xhr.setRequestHeader('Authorization', document.getElementById("token").value);
 xhr.onreadystatechange = function() {
@@ -373,7 +374,34 @@ getchannels(getguildsobj[n].id);
 getguildsxhr.send();
      
      }    
+     
+     function createchannelbuttons(){
+let result = "";
+let channelinfo = "";
+var getchannelsxhr = new XMLHttpRequest();
+getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + document.getElementById("channelid").value + "/channels", true);
+getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
+getchannelsxhr.setRequestHeader('Authorization', 'ODMwMzUwNTE2OTg2NzA4MDI4.YWXYrg.1gjrqiCBMtH6jRWhj63YkQGKcCo');
+getchannelsxhr.onreadystatechange = function() {
+    if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
+var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
+for (var y=0; y<getchannelsobj.length; y++) {
+if(getchannelsobj[y].type == 4 || getchannelsobj[y].type == 2)
+{
 
+}
+else
+{
+channelinfo = channelinfo + "<button style=\"border:0; margin:5px; border-radius:5px; cursor:pointer; background-color:#262626; color:white; height:25px; font-family:\"Segoe UI\"\" onclick=\"send()\" id=\"" + getchannelsobj[y].id + "\">#" + getchannelsobj[y].name +"</button>"
+}
+}
+result = result + channelinfo;
+console.log(result)
+document.getElementById("channelbuttons").innerHTML = result
+}
+}
+getchannelsxhr.send();
+ }      
 
         </script>
 
