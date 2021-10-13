@@ -381,7 +381,7 @@ let channelinfo = "";
 var getchannelsxhr = new XMLHttpRequest();
 getchannelsxhr.open("GET", "https://discord.com/api/v9/guilds/" + document.getElementById("channelid").value + "/channels", true);
 getchannelsxhr.setRequestHeader('Content-Type', 'application/json');
-getchannelsxhr.setRequestHeader('Authorization', 'ODMwMzUwNTE2OTg2NzA4MDI4.YWXYrg.1gjrqiCBMtH6jRWhj63YkQGKcCo');
+getchannelsxhr.setRequestHeader('Authorization', document.getElementById("token").value);
 getchannelsxhr.onreadystatechange = function() {
     if (getchannelsxhr.readyState == XMLHttpRequest.DONE) {
 var getchannelsobj = JSON.parse(getchannelsxhr.responseText);
